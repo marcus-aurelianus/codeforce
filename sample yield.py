@@ -1,3 +1,6 @@
+import sys
+reader = (s.rstrip() for s in sys.stdin)
+input = reader.__next__
 
 def gift():
     for _ in range(t):

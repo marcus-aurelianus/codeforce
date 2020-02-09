@@ -19,8 +19,8 @@ def subsIns():
                         break
             if found==0:
                 yield 'NO'
-            
-if __name__ == '__main__':
+                
+if __name__ == '__main__':      	
     t= int(input())
     ans = subsIns()
     print(*ans,sep='\n')

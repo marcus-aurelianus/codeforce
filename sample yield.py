@@ -4,8 +4,8 @@ input = reader.__next__
 
 def gift():
     for _ in range(t):
-        n,s = [int(x) for x in input().split()]
-        *a, = [int(x) for x in input().split()]
+        n,s = list(map(int,input().split()))
+        *a, = list(map(int,input().split()))
         res = 0
         ma = 0
         max_ind = 1

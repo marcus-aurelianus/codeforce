@@ -1,7 +1,8 @@
 import sys
 input = sys.stdin.buffer.readline
  
- 
+#import io, os
+#input = io.BytesIO(os.read(0,os.fstat(0).st_size)).readline
 n, m, p = map(int, input().split())
 a = list(map(int, input().split()))
 b = list(map(int, input().split()))

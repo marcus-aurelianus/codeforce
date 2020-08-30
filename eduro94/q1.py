@@ -4,14 +4,13 @@ input = reader.__next__
 
 def gift():
     for _ in range(t):
-        a,b = list(map(int,input().split()))
-        if b>a:
-            yield b-a
-        else:
-            if a%2==b%2:
-                yield 0
-            else:
-                yield 1
+        n= int(input())
+        string = input()
+        ans=[]
+        for i in range(n):
+            ans.append(string[2*i])
+        yield "".join(ans)
+
 if __name__ == '__main__':
     t= int(input())
     ans = gift()
@@ -20,3 +19,9 @@ if __name__ == '__main__':
 
 
 #"{} {} {}".format(maxele,minele,minele)
+
+
+
+
+
+#3 2 3 3

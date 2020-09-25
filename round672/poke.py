@@ -22,46 +22,49 @@ def gift():
 
         for i in range(q):
             s, e = ops[i]
-            sNum, eNum = arry[s-1],arry[e-1]
-            arry[s-1],arry[e-1] = arry[e-1],arry[s-1]
-            if s>1:
-                ans-=station[s-2]
-                station[s-2]=0
-                if arry[s-1]<arry[s-2]:
-                    tem = arry[s-2]-arry[s-1]
-                    station[s-2]= tem
+            if s==e:
+                yield ans
+            else:
+                sNum, eNum = arry[s-1],arry[e-1]
+                arry[s-1],arry[e-1] = arry[e-1],arry[s-1]
+                if s>1:
+                    ans-=station[s-2]
+                    station[s-2]=0
+                    if arry[s-1]<arry[s-2]:
+                        tem = arry[s-2]-arry[s-1]
+                        station[s-2]= tem
+                        ans += tem
+      
+                ans-=station[s-1]
+                station[s-1]=0
+                if arry[s]<arry[s-1]:
+                    tem = arry[s-1]-arry[s]
+                    station[s-1]= tem
                     ans += tem
-  
-            ans-=station[s-1]
-            station[s-1]=0
-            if arry[s]<arry[s-1]:
-                tem = arry[s-1]-arry[s]
-                station[s-1]= tem
-                ans += tem
 
-            if e==n:
-                ans-=station[n-1]
-                station[n-1]=sNum
-                ans+=sNum
-            elif e-s>1:
+                if e==n:
+                    ans-=station[n-1]
+                    station[n-1]=sNum
+                    ans+=sNum
+
                 ans-=station[e-2]
                 station[e-2]=0
                 if arry[e-1]<arry[e-2]:
                     tem = arry[e-2]-arry[e-1]
                     station[e-2] = tem
                     ans += tem
-      
+          
 
-            if e<n:
-                ans-=station[e-1]
-                station[e-1]=0
-                if arry[e]<arry[e-1]:
-                    tem = arry[e-1]-arry[e]
-                    station[e-1] = tem
-                    ans += tem
-        
+                if e<n:
+                    ans-=station[e-1]
+                    station[e-1]=0
+                    if arry[e]<arry[e-1]:
+                        tem = arry[e-1]-arry[e]
+                        station[e-1] = tem
+                        ans += tem
             
-            yield ans
+                
+                yield ans
 
 if __name__ == '__main__':
     t= int(input())

@@ -1,25 +1,30 @@
 import sys
-reader = (s.rstrip() for s in sys.stdin)
-input = reader.__next__
+input = sys.stdin.readline
 import math
 
-people = int(input())
-roads = list(map(int,input().split()))
-citizens = list(map(int,input().split()))
+n=int(input())
+P=[1]+list(map(int,input().split()))
+A=list(map(int,input().split()))
+ 
+for i in range(n):
+    P[i]-=1
+ 
+Y=[1]*n
+for i in range(n):
+    Y[P[i]]=0
+ 
+#print(Y)
+ 
+for i in range(n-1,0,-1):
+    Y[P[i]]+=Y[i]
+ 
+S=[a for a in A]
+for i in range(n-1,0,-1):
+    S[P[i]]+=S[i]
+ 
 
-dic = {1:True}
-uniq = 0
-for i,ele in enumerate(roads):
-    curr = i+2
-    dic[curr]=True
-    dic[ele]=False
+ans = 0
+for i in range(n):
+    ans = max(ans,math.ceil(S[i]/Y[i]))
+print(ans)
 
-maxAns = 0
-for ele in dic:
-    if dic[ele]:
-        uniq+=1
-        maxAns = max(maxAns,citizens[ele-1])
-
-print(max(maxAns,math.ceil(sum(citizens)/uniq)))
-#"{} {} {}".format(maxele,minele,minele)
-# 1 2 2 2 2

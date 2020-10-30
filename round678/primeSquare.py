@@ -21,17 +21,19 @@ def is_prime(n):
     # If we did not find any factor in the above loop,
     # then n is a prime number
     return True
+
 def gift():
     for _ in range(t):
         n = int(input())
-        desireNum = 1
-        for i in range(2,10):
-            temDesire = (2**i)
-            if is_prime((n-1)*temDesire+1):
-                desireNum = temDesire
-                break
         for i in range(n):
-            yield " ".join(str(x) for x in [desireNum]*i+[1]+(n-i-1)*[desireNum])
+            posA = i
+            posB = n-1-i
+            if n%2==0 or (n%2 and abs(posA-posB)>2):
+                thisRow = min(posA,posB)*[0]+[1]+(abs(posA-posB)-1)*[0]+[1]+(n-1-max(posA,posB))*[0]
+            else:
+                posMid = n//2
+                thisRow = (posMid-1)*[0]+[1,1,1]+(n-1-posMid-1)*[0]
+            yield " ".join(str(x) for x in thisRow)
 if __name__ == '__main__':
     t= int(input())
     ans = gift()

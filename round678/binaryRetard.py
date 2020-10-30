@@ -1,7 +1,7 @@
 import sys
 reader = (s.rstrip() for s in sys.stdin)
 input = reader.__next__
-
+import math
 
 n,x,pos = list(map(int,input().split()))
 
@@ -34,7 +34,22 @@ while left<right:
             ans = 0
             break
     else:
+        left = middle + 1
         break
+#print(left,right)
+while left<right:
+    middle = (left+right)//2
+    if middle>pos:
+        if bigger>0:
+            ans = ans*(bigger)%mod
+            bigger-=1
+            right = middle
+        else:
+            ans = 0
+            break
+    else:
+        break
+
 if ans == 0:
     print(0)
 else:

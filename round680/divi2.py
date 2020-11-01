@@ -48,24 +48,21 @@ def gift():
                 yield xi
             else:
                 #print(xi,pi)
-                right = pi
-                array = sorted(factors(right),reverse=True)
                 ans = 1
-                for ele in array:
-                    if (xi//ele)%right:
-                        ans=max(ans,xi//ele)
-                pFactors = primeFactors(pi)
 
+                pFactors = primeFactors(pi)
+                #print(pFactors)
                 for i in range(len(pFactors)):
                     counter=1
                     while True:
-                        now = pFactors[i][0]**(pFactors[i][1]+counter)
+                        now = pFactors[i][0]**(counter)
                         if xi%(now)==0:
                             if (xi//now%pi):
                                 ans = max(ans,xi//now)
                         else:
                             break
                         counter+=1
+                        #print(i,counter)
                 yield ans
                     
 

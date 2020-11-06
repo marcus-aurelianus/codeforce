@@ -12,6 +12,7 @@ for loop in range(tt):
     l = 0
  
     for i in range(n):
+ 
         if r + l < a[i]:
             l = a[i] - r
         elif r + l > a[i]:

@@ -16,7 +16,7 @@ def gift():
                 if a[s]<=a[s-1]:
                     s+=1
                     found=True
-                if a[e-1]>=a[e]:
+                if a[e]<=a[e+1]:
                     e-=1
                     found=True
                 if not found:
@@ -29,7 +29,7 @@ def gift():
                     currE = a[n-1]
                 else:
                     currE = a[e+1]
-                #print(a,s,e)
+                #print(a,a[s:e+1],s,e)
                 rev = False
                 count = 0
                 for i in range(s,e+1):

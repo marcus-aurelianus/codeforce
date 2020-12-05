@@ -22,6 +22,7 @@ def gift():
                     continue
                 xx = ll + 2*max(k-k2, k1-k, 0)
                 yy = llb + 2*max(k-k4, k3-k, 0)
+                print(xx,yy)
                 ans = min(ans, xx+yy)        
         yield ans               
         

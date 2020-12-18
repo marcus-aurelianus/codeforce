@@ -4,6 +4,8 @@ input = reader.__next__
 from functools import reduce
 from math import sqrt
 
+dic = {}
+
 def factors(n):
         step = 2 if n%2 else 1
         return set(reduce(list.__add__,
@@ -25,7 +27,12 @@ def gift():
                 toappend = None
                 minDiff = float("inf")
                 if last>curr:
-                    Lfactors = sorted(list(factors(last)))
+                    if dic.get(last,False):
+                        Lfactors = dic[last]
+                    else:
+                        res = sorted(list(factors(last)))
+                        Lfactors = res
+                        dic[last] = res
                     for factor in Lfactors:
                         if (abs(factor-curr))<minDiff:
                             minDiff=abs(factor-curr)

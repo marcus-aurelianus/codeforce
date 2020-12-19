@@ -27,24 +27,12 @@ if len(arry)==0:
 else:
     currMin = min(arry)
     for ele in arry:
-        if currMin%ele==0 or ele%currMin==0:
-            currMin=min(currMin,ele)
-        else:
-            currMin = math.gcd(currMin,ele)
-        if currMin ==1:
-            break
+        currMin = math.gcd(currMin,ele)
 
-    if currMin==1:
-        for i in range(m):
-            ans.append(1)
-    else:
-        for i in range(m):
-            if currMin%(mina+b[i])==0:
-                ans.append(mina+b[i])
-            elif (mina+b[i])%(currMin)==0:
-                ans.append(currMin)
-            else:
-                ans.append(1)       
+
+    for i in range(m):
+        ans.append(math.gcd(mina+b[i],currMin))
+   
 
 print(" ".join([str(x) for x in ans]))
 

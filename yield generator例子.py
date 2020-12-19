@@ -28,3 +28,5 @@ if __name__ == '__main__':
 
 
 #"{} {} {}".format(maxele,minele,minele)
+
+# yield " ".join([str(x) for x in ans])

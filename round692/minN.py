@@ -4,11 +4,8 @@ input = reader.__next__
 
 def goodNum(num):
     strN = str(num)
-    dic = {}
     for ele in strN:
-        dic[ele]=True
-    for key in dic:
-        if key !='0' and num%(int(key))!=0:
+        if ele !='0' and num%(int(ele))!=0:
             return False
     return True
 
